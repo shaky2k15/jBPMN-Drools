@@ -1,0 +1,24 @@
+package com.sample;
+
+import com.sample.Purchase;
+import com.sample.PaymentMethod;
+
+rule "Cash purchases have no discount"
+    ruleflow-group "discountevaluation"
+    when
+        p:Purchase(paymentMethod == PaymentMethod.CASH)
+    then
+        p.setDiscount(0);
+        System.out.println("discount set to 0 ");
+	  
+end
+
+rule "Debit Card purchases have 5% of discount"
+    ruleflow-group "discountevaluation"
+    when
+        p:Purchase(paymentMethod == PaymentMethod.DEBIT)
+    then
+    	p.setDiscount(0.05);
+    	System.out.println("discount set to 0.05 ");
+    	
+end
